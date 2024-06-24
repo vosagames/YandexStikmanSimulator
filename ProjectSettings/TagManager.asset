@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Knife
+  - BladeTrap
+  - DamageControl
+  - PlayerCanvas
+  - DamagePanel
+  - UseInput
+  - HidePanel
+  - PlayerType
+  - Ray
+  - DestroyObj
+  - InputE
+  - inpute
+  - Drag
+  - GrabBody
+  - Platform
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Grafon
+  - Water
+  - UI
+  - NoCollision
+  - RaycastUse
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
