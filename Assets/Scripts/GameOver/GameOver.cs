@@ -5,6 +5,7 @@ using TMPro;
 using static GameManager;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using YG;
 
 public class GameOver : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameOver : MonoBehaviour
 
     [SerializeField] private List <string> _gameOverText = new List<string>();
     [SerializeField] private List<TMP_Text> _text = new List<TMP_Text>();
+    [SerializeField] private TMP_Text TextForString1, TextForString2;
 
     [SerializeField] private List<AudioSource> _audioKeys;
 
@@ -21,8 +23,9 @@ public class GameOver : MonoBehaviour
     {
         Invoke("loadLevel", 5f);
         NumberPlayer++;
-        _gameOverText[0] = $"Îáðàçåö íîìåð: {NumberPlayer}";
-        _gameOverText[1] = "Ñòàòóñ: #ÓÍÈ×ÒÎÆÅÍ";
+        Save();
+        _gameOverText[0] = TextForString1.text + $" {NumberPlayer}";
+        _gameOverText[1] = TextForString2.text;
 
         StartCoroutine(printTXT());
     }
@@ -46,5 +49,11 @@ public class GameOver : MonoBehaviour
         _audioKeys[id].Play();
     }
     private void loadLevel() => SceneManager.LoadScene(NumberLevel);
+
+    public void Save()
+    {
+        YandexGame.savesData.NumberPlayer = NumberPlayer;
+        YandexGame.SaveProgress();
+    }
 
 }

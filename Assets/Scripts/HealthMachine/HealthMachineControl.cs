@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameManager;
+using YG;
 
 public class HealthMachineControl : MonoBehaviour
 {
@@ -34,6 +36,8 @@ public class HealthMachineControl : MonoBehaviour
         TriggerStart.SetActive(false);
         TriggerForStart.SetActive(true);
         InputE.SetActive(true);
+        Health = 100;
+        Save();
         Instantiate(newRay, SpawnPos.position, transform.rotation);
         Instantiate(newPlayer, SpawnPos.position, transform.rotation);
         Invoke("OpenDoor", 1f);
@@ -43,6 +47,11 @@ public class HealthMachineControl : MonoBehaviour
     {
         HealthMachine.SetFloat("speed", 1f);
         HealthMachine.SetTrigger("OpenDoor");
+    }
+    public void Save()
+    {
+        YandexGame.savesData.Health = Health;
+        YandexGame.SaveProgress();
     }
 }
 

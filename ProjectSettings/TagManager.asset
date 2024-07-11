@@ -19,6 +19,8 @@ TagManager:
   - Drag
   - GrabBody
   - Platform
+  - ButtonEUI
+  - Point
   layers:
   - Default
   - TransparentFX
