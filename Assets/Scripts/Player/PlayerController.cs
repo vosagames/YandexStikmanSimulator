@@ -60,6 +60,8 @@ public class PlayerController : MonoBehaviour
     }
     private void Move()
     {
+        _animator.SetBool("Jump", true);
+
         _groundedPlayer = _characterController.isGrounded;
         if(_groundedPlayer && _playerVelocity.y < 0)
         {
@@ -124,7 +126,6 @@ public class PlayerController : MonoBehaviour
     
         _playerVelocity.y += _gravityValue * Time.deltaTime;
         _characterController.Move(_playerVelocity * Time.deltaTime);
-        _animator.SetBool("Jump", true);
 
         Vector3 rayDirection = new Vector3(0, -1, 0);
         Ray ray = new Ray(transform.position, rayDirection);
@@ -132,7 +133,7 @@ public class PlayerController : MonoBehaviour
         if(Physics.Raycast(ray, out hit, _rayDistance)) 
         {
             Debug.DrawRay(transform.position, rayDirection * _rayDistance, Color.red);
-            if(hit.collider.gameObject != null && !hit.collider.gameObject.CompareTag("Player"))
+            if(hit.collider != null && !hit.collider.gameObject.CompareTag("Player"))
             {
                 _animator.SetBool("Jump", false);
                 Debug.Log("!= null");

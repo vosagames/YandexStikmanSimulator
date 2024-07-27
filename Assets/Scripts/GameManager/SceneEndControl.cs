@@ -21,6 +21,8 @@ public class SceneEndControl : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         if(YandexGame.SDKEnabled == true)
         {
             GetLoad();
@@ -41,6 +43,7 @@ public class SceneEndControl : MonoBehaviour
     public void LoadMenu()
     {
         YandexGame.ResetSaveProgress();
+        YandexGame.SaveProgress();
         SceneManager.LoadScene(0);
     }
 

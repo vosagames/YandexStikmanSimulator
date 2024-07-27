@@ -83,37 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &3472338123753755031
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6822363646848273946}
-  m_Layer: 0
-  m_Name: 'Input E '
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6822363646848273946
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3472338123753755031}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.2}
-  m_LocalScale: {x: 0.057142846, y: 0.057142846, z: 0.057142846}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6277780716021522972}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3689745371955173199
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,7 +178,6 @@ GameObject:
   - component: {fileID: 7657250316188640117}
   - component: {fileID: 1358083658418480097}
   - component: {fileID: 1828801902082706865}
-  - component: {fileID: 3436462924655783470}
   m_Layer: 0
   m_Name: buttonswitch
   m_TagString: UseInput
@@ -232,7 +200,6 @@ Transform:
   m_Children:
   - {fileID: 8554673430572685262}
   - {fileID: 8646472484813002447}
-  - {fileID: 6822363646848273946}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7657250316188640117
@@ -306,16 +273,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.38841763, y: 0.26448, z: 0.09150019}
   m_Center: {x: 0.0012057497, y: 0.003038883, z: 0.04119949}
---- !u!114 &3436462924655783470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9176150244866530169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf2512a9ee3fd544d8c50e72222d60de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _posInputE: {fileID: 6822363646848273946}

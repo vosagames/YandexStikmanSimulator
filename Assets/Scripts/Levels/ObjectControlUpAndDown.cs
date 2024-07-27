@@ -11,7 +11,17 @@ public class ObjectControlUpAndDown : MonoBehaviour
 
     [SerializeField] private bool Up_Down;
 
-    private void OnEnable() => GetComponent<AudioSource>().Play();
+    private void OnEnable()
+    {
+        if(transform.position.y !=  _positionY)
+        {
+            GetComponent<AudioSource>().Play();
+        }
+        else
+        {
+            GetComponent<AudioSource>().Stop();
+        }
+    }
 
     private void FixedUpdate()
     {

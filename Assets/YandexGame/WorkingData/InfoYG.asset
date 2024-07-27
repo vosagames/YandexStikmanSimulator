@@ -131,7 +131,7 @@ MonoBehaviour:
     thisPlayer:
       rank: 0
       score: 0
-  - technoName: time
+  - technoName: times
     entries: 'Test LeaderBoard
 
       Name: time
@@ -145,7 +145,7 @@ MonoBehaviour:
     isDefault: 0
     isInvertSortOrder: 0
     decimalOffset: 0
-    type: numeric
+    type: time
     players:
     - rank: 1
       name: anonymous
@@ -174,9 +174,9 @@ MonoBehaviour:
       uniqueID: 000
     - rank: 6
       name: Player6
-      score: 340000
+      score: 124000
       photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 321
+      uniqueID: 1
     thisPlayer:
       rank: 2
       score: 10

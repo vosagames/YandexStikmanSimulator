@@ -1,10 +1,10 @@
 {
-    "idSave": 1,
+    "idSave": 22,
     "isFirstSession": false,
     "language": "en",
     "promptDone": false,
     "Health": 100,
-    "NumberLevel": 2,
+    "NumberLevel": 1,
     "NumberPlayer": 2008,
-    "timerGame": 53.79682159423828
+    "timerGame": 0.0
 }

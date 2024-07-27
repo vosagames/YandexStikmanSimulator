@@ -8,4 +8,5 @@ public class Doors : MonoBehaviour
 
     public void DoorFalse() => doorCol.SetActive(false);
     public void DoorTrue() => doorCol.SetActive(true);
+
 }

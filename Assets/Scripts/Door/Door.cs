@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using static GameManager;
 using UnityEngine.SceneManagement;
@@ -20,7 +19,6 @@ public class Door : MonoBehaviour
         objectDoor.SetActive(false);
         animationDoor.SetActive(true);
         Invoke("NextLevel", 6f);
-        Destroy(GameObject.FindGameObjectWithTag("Point"));
         var obj = GameObject.FindGameObjectsWithTag("Player");
         for(int i = 0; i<obj.Length; i++)
         {

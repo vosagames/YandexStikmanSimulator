@@ -1,20 +1,20 @@
-
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 public class CameraRay : MonoBehaviour
 {
     [SerializeField] private float _rayDistance = 4f;
     [SerializeField] private float _smoothTime = 0.2f;
 
-    [SerializeField] private GameObject _InputE;
-
     [SerializeField] private Transform _transformCamera;
     [SerializeField] private Transform DragPosition;
 
     [SerializeField] private GameObject _buttonInputE;
 
-    [SerializeField] private GameObject _rayPoint;
+    [SerializeField] private GameObject _aimArm;
+
+    [SerializeField] private GameObject _aimPoint;
 
     private Vector3 velocity = Vector3.zero;
 
@@ -26,14 +26,25 @@ public class CameraRay : MonoBehaviour
 
     private bool GrabReload;
 
+    private void Awake()
+    {
+        _aimArm = GameObject.FindGameObjectWithTag("AimArm");
+        _aimPoint = GameObject.FindGameObjectWithTag("AimPoint");
+        _aimPoint.SetActive(true);
+        _aimArm.SetActive(false);
+    }
     public void Start()
     {
-        _InputE = FindObjectOfType<ObjectLookCamera>().gameObject;
-        _InputE.SetActive(false);
-        _rayPoint = GameObject.FindGameObjectWithTag("Point");
         _transformCamera = GameObject.FindGameObjectWithTag("Ray").transform;
-        Invoke("DragPosFind", 1f);
-        Invoke("ButtonEUse", 1f);
+        Invoke("DragPosFind", 0.0001f);
+        if (YandexGame.EnvironmentData.isMobile == true || YandexGame.EnvironmentData.isTablet == true)
+        {
+            Invoke("ButtonEUse", 0.0001f);
+        }
+        else
+        {
+            _buttonInputE = null;
+        }
     }
     void Update()
     {
@@ -47,11 +58,19 @@ public class CameraRay : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, _rayDistance))
         {
-            if(hit.collider.gameObject.GetComponent<Switch>())
+            if (hit.collider.gameObject.CompareTag("UseInput") || hit.collider.gameObject.CompareTag("GrabBody"))
             {
-                _InputE.SetActive(true);
-                _InputE.GetComponent<Animator>().SetBool("Show", true);
-                _InputE.transform.position = hit.collider.gameObject.GetComponent<Switch>()._posInputE.transform.position;
+                _aimPoint.SetActive(false);
+                _aimArm.SetActive(true);
+            }
+            else
+            {
+                _aimPoint.SetActive(true);
+                _aimArm.SetActive(false);
+            }
+
+            if (hit.collider.gameObject.CompareTag("UseInput"))
+            {
                 if (hit.collider.gameObject.GetComponent<LeverSwitch>() && Input.GetKeyDown(KeyCode.E) || UseButtonE == true && hit.collider.gameObject.GetComponent<LeverSwitch>())
                 {
                     hit.collider.gameObject.GetComponent<LeverSwitch>().UseHandle();
@@ -65,18 +84,19 @@ public class CameraRay : MonoBehaviour
                     hit.collider.gameObject.GetComponent<Door>().OpenDoor();
                 }
             }
-            else if(hit.collider.gameObject.GetComponent<Switch>() == null)
+
+            if(hit.collider.gameObject.CompareTag("GrabBody"))
             {
-                _InputE.GetComponent<Animator>().SetBool("Show", false);
+                if (hit.rigidbody && Input.GetKeyDown(KeyCode.E) && Grab == false && hit.collider.gameObject.CompareTag("GrabBody") || UseButtonE == true && hit.rigidbody && Grab == false && hit.collider.gameObject.CompareTag("GrabBody"))
+                {
+                    DragObject = hit.rigidbody.gameObject;
+                    DragObject.GetComponent<Rigidbody>().isKinematic = true;
+                    Grab = true;
+                    GrabReload = true;
+                    Debug.Log("Grab");
+                }
             }
-            if(hit.rigidbody && Input.GetKeyDown(KeyCode.E) && Grab == false && hit.collider.gameObject.CompareTag("GrabBody") || UseButtonE == true && hit.rigidbody && Grab == false && hit.collider.gameObject.CompareTag("GrabBody"))
-            {
-                DragObject = hit.rigidbody.gameObject;
-                DragObject.GetComponent<Rigidbody>().isKinematic = true;
-                Grab = true;
-                GrabReload = true;
-                Debug.Log("Grab");
-            }
+
         }
 
         if (Grab == true)
@@ -115,25 +135,5 @@ public class CameraRay : MonoBehaviour
         _buttonInputE = GameObject.FindGameObjectWithTag("ButtonEUI");
         Button btn = _buttonInputE.GetComponent<Button>();
         btn.onClick.AddListener(UseButtonEForMobile);
-    }
-    private void LateUpdate()
-    {
-        Ray ray = new Ray(transform.position, _transformCamera.forward);
-        RaycastHit hit;
-        Debug.DrawRay(transform.position, _transformCamera.forward * _rayDistance, Color.black);
-
-        if(Physics.Raycast(ray, out hit, _rayDistance))
-        {
-            if(hit.collider.gameObject != null)
-            {
-                _rayPoint.SetActive(true);
-                Vector3 pointPos = new Vector3(hit.point.x + 0.1f, hit.point.y + 0.1f, hit.point.z + 0.1f);
-                _rayPoint.transform.position = pointPos;
-            }
-        }
-        else
-        {
-            _rayPoint.SetActive(false);
-        }
-    }
+    }   
 }

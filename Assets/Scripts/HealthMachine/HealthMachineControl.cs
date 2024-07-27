@@ -1,57 +1,49 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static GameManager;
 using YG;
 
 public class HealthMachineControl : MonoBehaviour
 {
-    [SerializeField] private TriggerReset tReset;
+    [SerializeField] private Animator _animatorHealthMachine;
 
-    [SerializeField] private Animator HealthMachine;
+    [SerializeField] private Transform _spawnPlayerPosition;
 
-    [SerializeField] private Transform SpawnPos;
+    [SerializeField] private GameObject _newPlayer;
+    [SerializeField] private GameObject _newRay;
+    [SerializeField] private GameObject _triggerExit;
 
-    [SerializeField] private GameObject newPlayer;
-    [SerializeField] private GameObject newRay;
-    [SerializeField] private GameObject player;
-    [SerializeField] private GameObject TriggerForStart;
-    [SerializeField] private GameObject TriggerStart;
-    [SerializeField] private GameObject InputE;
+    [SerializeField] AudioSource _doorSound;
 
-    private void Awake()
+    private void Start()
     {
-        HealthMachine = GetComponent<Animator>();
-        InputE = FindObjectOfType<ObjectLookCamera>().gameObject;
+        _animatorHealthMachine = GetComponent<Animator>();
     }
 
+    public void OpenDoorHealthMachine()
+    {
+        _animatorHealthMachine.SetFloat("speed", 1f);
+        _animatorHealthMachine.SetTrigger("OpenDoor");
+        _doorSound.Play();
+    }
+    public void CloseDoorHealthMachine()
+    {
+        _animatorHealthMachine.SetFloat("speed", -1f);
+        _animatorHealthMachine.SetTrigger("OpenDoor");
+        _doorSound.Play();
+    }
     public void HealthPlayer()
     {
-        player = tReset.Player;
-        Invoke("ResetPlayer", 2f);
-        Invoke("DestroyPlayer", 0.3f);
-    }
-    private void ResetPlayer()
-    {
-        TriggerStart.SetActive(false);
-        TriggerForStart.SetActive(true);
-        InputE.SetActive(true);
         Health = 100;
-        Save();
-        Instantiate(newRay, SpawnPos.position, transform.rotation);
-        Instantiate(newPlayer, SpawnPos.position, transform.rotation);
-        Invoke("OpenDoor", 1f);
-    }
-    private void DestroyPlayer() => Destroy(player);
-    private void OpenDoor()
-    {
-        HealthMachine.SetFloat("speed", 1f);
-        HealthMachine.SetTrigger("OpenDoor");
-    }
-    public void Save()
-    {
         YandexGame.savesData.Health = Health;
         YandexGame.SaveProgress();
+        Invoke("CreateNewPlayer", 0.5f);
     }
-}
+    private void CreateNewPlayer()
+    {
+        Instantiate(_newRay, transform.position, Quaternion.identity);
+        Instantiate(_newPlayer, _spawnPlayerPosition.position, Quaternion.identity);
+        _triggerExit.SetActive(true);
+        OpenDoorHealthMachine();
+    }
 
+}

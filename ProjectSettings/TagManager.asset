@@ -21,6 +21,10 @@ TagManager:
   - Platform
   - ButtonEUI
   - Point
+  - NoTarget
+  - NoUseCollider
+  - AimArm
+  - AimPoint
   layers:
   - Default
   - TransparentFX

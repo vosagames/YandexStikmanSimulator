@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -696,7 +697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 423e13a42d313f948a13bcedae13febe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameLB: time
+  nameLB: times
   maxQuantityPlayers: 6
   quantityTop: 3
   quantityAround: 6
@@ -706,9 +707,9 @@ MonoBehaviour:
   rootSpawnPlayersData: {fileID: 1565662271}
   playerDataPrefab: {fileID: 4472298897702658087, guid: 17f3c499fec7ee941a6240b6e0f56c33, type: 3}
   playerPhoto: 1
-  isHiddenPlayerPhoto: {fileID: 0}
+  isHiddenPlayerPhoto: {fileID: -242349977, guid: 889e8edbfa60a574f998f1569d97a3ac, type: 3}
   timeTypeConvert: 1
-  decimalSize: 2
+  decimalSize: 3
   onUpdateData:
     m_PersistentCalls:
       m_Calls: []
