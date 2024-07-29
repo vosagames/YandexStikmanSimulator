@@ -5,6 +5,8 @@ public class Laser : MonoBehaviour
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private float laserMaxLength = 50f;
 
+    public bool Power = true;
+
     private void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
@@ -12,7 +14,10 @@ public class Laser : MonoBehaviour
 
     private void Update()
     {
-        UpdateLaser();
+        if(Power == true)
+        {
+            UpdateLaser();
+        }
     }
 
     private void UpdateLaser()
