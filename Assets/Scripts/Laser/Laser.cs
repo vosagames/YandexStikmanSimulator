@@ -16,7 +16,12 @@ public class Laser : MonoBehaviour
     {
         if(Power == true)
         {
+            lineRenderer.enabled = true;
             UpdateLaser();
+        }
+        else
+        {
+            lineRenderer.enabled = false;
         }
     }
 
