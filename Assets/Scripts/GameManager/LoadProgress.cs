@@ -27,6 +27,8 @@ public class LoadProgress : MonoBehaviour
     
     public void PlayGame()
     {
-        SceneManager.LoadScene(NumberLevel);
+        Invoke("LoadGame", 0.2f);
     }
+
+    private void LoadGame() => SceneManager.LoadScene(NumberLevel);
 }

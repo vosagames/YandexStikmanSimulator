@@ -17,17 +17,17 @@ MonoBehaviour:
   autoGameReadyAPI: 1
   playerInfoSimulation:
     authorized: 1
-    isMobile: 0
+    isMobile: 1
     language: en
-    name: Player this
+    name: VOSA GAMES
     uniqueID: 000
     photo: https://justplaygames.ru/public/icon_player.png
-  AdWhenLoadingScene: 0
+  AdWhenLoadingScene: 1
   showFirstAd: 1
   rewardedAfterClosing: 0
   adDisplayCalls: 0
-  fullscreenAdInterval: 10
-  durationOfAdSimulation: 0.5
+  fullscreenAdInterval: 5
+  durationOfAdSimulation: 2
   loadAdWithDelaySimulation: 0
   testErrorOfRewardedAdsInEditor: 0
   saveCloud: 1

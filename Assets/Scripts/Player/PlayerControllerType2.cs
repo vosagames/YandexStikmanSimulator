@@ -2,6 +2,9 @@ using UnityEngine;
 using YG;
 public class PlayerControllerType2 : MonoBehaviour
 {
+
+    public bool isMove;
+
     [SerializeField] private CharacterController controller;
 
     [SerializeField] private Transform _playerCamera;
@@ -28,6 +31,8 @@ public class PlayerControllerType2 : MonoBehaviour
 
     private void Start()
     {
+        isMove = true;
+
         _playerCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
         _playerVelocity = Vector3.zero;
         controller = GetComponent<CharacterController>();
@@ -46,7 +51,14 @@ public class PlayerControllerType2 : MonoBehaviour
     }
     private void Update()
     {
-        Move();
+        if (isMove == true)
+        {
+            Move();
+        }
+        else
+        {
+            Debug.Log("Move STOP!");
+        }
     }
     private void Move()
     {

@@ -3,6 +3,8 @@ using YG;
 
 public class Type3PlayerController : MonoBehaviour
 {
+    public bool isMove; 
+
     [SerializeField] private float _speed = 1.1f;
     [SerializeField] private float _rotateSpeed = 3f;
     [SerializeField] private float _roationPSe;
@@ -30,6 +32,7 @@ public class Type3PlayerController : MonoBehaviour
 
     private void Start()
     {
+        isMove = true;
         if (YandexGame.EnvironmentData.isMobile == true || YandexGame.EnvironmentData.isTablet == true)
         {
             MobileInput.SetActive(true);
@@ -46,7 +49,14 @@ public class Type3PlayerController : MonoBehaviour
 
     private void Update()
     {
-        Move();
+        if (isMove == true)
+        {
+            Move();
+        }
+        else
+        {
+            Debug.Log("Move STOP!");
+        }
     }
     private void FixedUpdate()
     {

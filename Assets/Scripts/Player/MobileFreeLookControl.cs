@@ -1,20 +1,26 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Cinemachine;
 using YG;
 
 public class MobileFreeLookControl : MonoBehaviour
 {
     [SerializeField] private CinemachineFreeLook freeLookCamera;
-    // [SerializeField] private Rect touchArea; // Здесь вы можете указать область на экране, в которой должно происходить вращение камеры
-    [SerializeField] private Joystick _joystick;
 
-    private bool isDragging = false;
-    private Vector2 lastPosition;
+    [SerializeField] private Rect touchArea;
+
     private Touch touch;
-
 
     private void Start()
     {
+        if (Screen.width <= 1334)
+        {
+            touchArea = new Rect(500f, 0f, 2000f, 2000f);
+        }
+        else
+        {
+            touchArea = new Rect(1000f, 0f, 2000f, 2000f);
+        }
         freeLookCamera = GetComponent<CinemachineFreeLook>();
         if(YandexGame.EnvironmentData.isMobile == true || YandexGame.EnvironmentData.isTablet == true )
         {
@@ -27,44 +33,35 @@ public class MobileFreeLookControl : MonoBehaviour
             freeLookCamera.m_YAxis.m_InputAxisName = "Mouse Y";
         }
     }
-    /*
-       void Update()
-       {
-           if (Input.touchCount > 0)
-           {
-               if(Input.touchCount == 1) 
-               {
-                   touch = Input.GetTouch(0);
-               }
-               else if(Input.touchCount > 1)
-               {
-                   touch = Input.GetTouch(1);
-               }
-
-               if (touch.phase == TouchPhase.Began && touchArea.Contains(touch.position))
-               {
-                   isDragging = true;
-                   lastPosition = touch.position;
-               }
-               else if (touch.phase == TouchPhase.Moved && isDragging)
-               {
-                   Vector2 delta = touch.position - lastPosition;
-                   freeLookCamera.m_XAxis.Value += delta.x * 5f * Time.deltaTime; // Изменение горизонтального вращения камеры
-                   freeLookCamera.m_YAxis.Value -= delta.y * 0.05f * Time.deltaTime; // Изменение вертикального вращения камеры
-                   lastPosition = touch.position;
-               }
-               else if (touch.phase == TouchPhase.Ended)
-               {
-                   isDragging = false;
-               }
-           }
-       }
-    */
+    
     private void Update()
     {
-        freeLookCamera.m_XAxis.Value += _joystick.Horizontal * 6f;
-        freeLookCamera.m_YAxis.Value -= _joystick.Vertical * 0.020f;
+        if (Input.touchCount > 0)
+        {
+            if(Input.touchCount == 1) 
+            {
+                touch = Input.GetTouch(0);
+            }
+
+            if(Input.touchCount == 2)
+            {
+                touch = Input.GetTouch(1);
+            }
+        }
+
+        if (touch.phase == TouchPhase.Moved && touchArea.Contains(touch.position))
+        {
+            Vector2 touchDelta = touch.deltaPosition;
+            FreeLookCam(touchDelta);
+        }
     }
+    private void FreeLookCam(Vector2 delta)
+    {
+        float HorizontalRotation = delta.x * 0.1f;
+        float VerticalRotation = delta.y * 0.1f;
+
+        freeLookCamera.m_XAxis.Value -= HorizontalRotation * 6f;
+        freeLookCamera.m_YAxis.Value += VerticalRotation * 0.020f;
+    }
+  
 }
-
-

@@ -11,7 +11,7 @@ public class TriggerPlatform : MonoBehaviour
         script2.SetActive(false);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
         {

@@ -4,6 +4,9 @@ using YG;
 
 public class PlayerController : MonoBehaviour
 {
+
+    public bool isMove;
+
     [SerializeField] private CharacterController _characterController;
 
     [SerializeField] private Transform _playerCamera;
@@ -36,8 +39,18 @@ public class PlayerController : MonoBehaviour
     private float vertical;
     private float speed;
 
+    private void Awake()
+    {
+        if (YandexGame.EnvironmentData.isDesktop == true)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
+
     private void Start()
     {
+        isMove = true;
         _playerCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
         _playerVelocity = Vector3.zero;
         _characterController = GetComponent<CharacterController>();
@@ -56,7 +69,17 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        Move();
+        if (isMove == true)
+        {
+            Move();
+        }
+        else
+        {
+            Debug.Log("Move STOP!");
+            _animator.SetBool("Walk", false);
+            _animator.SetBool("Run", false);
+            _animator.SetBool("Jump", false);
+        }
     }
     private void Move()
     {

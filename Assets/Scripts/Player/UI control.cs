@@ -8,10 +8,12 @@ public class UIcontrol : MonoBehaviour
     [SerializeField] private GameObject UImenu;
     [SerializeField] private TimerControl timer;
     [SerializeField] private GameObject SettingsForMobile;
+    [SerializeField] private GameObject virtualCamera;
 
     private bool Switch = false;
     private bool wait = false;
     private bool MenuForMobile;
+    private GameObject _destroyVirtualCamera;
 
     private void Start()
     {
@@ -41,15 +43,50 @@ public class UIcontrol : MonoBehaviour
             wait = true;
             Switch = true;
             Invoke("Wait", 1f);
+            _destroyVirtualCamera = Instantiate(virtualCamera, Camera.main.transform.position, Camera.main.transform.rotation);
+            GameObject[] ObjectsPlayerTag = GameObject.FindGameObjectsWithTag("Player");
+            for(int element = 0; element < ObjectsPlayerTag.Length; element++)
+            {
+                if (ObjectsPlayerTag[element].GetComponent<PlayerController>())
+                {
+                    ObjectsPlayerTag[element].GetComponent<PlayerController>().isMove = false;
+                }
+                else if (ObjectsPlayerTag[element].GetComponent<PlayerControllerType2>())
+                {
+                    ObjectsPlayerTag[element].GetComponent<PlayerControllerType2>().isMove = false;
+                }
+                else if (ObjectsPlayerTag[element].GetComponent<Type3PlayerController>())
+                {
+                    ObjectsPlayerTag[element].GetComponent<Type3PlayerController>().isMove = false;
+                }
+            }
         }
         if (Input.GetKeyDown(KeyCode.Escape) && Switch == true && wait == false)
         {
-            UImenu.SetActive(false);
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+            UImenu.SetActive(false);
             wait = true;
             Switch = false;
             Invoke("Wait", 1f);
+            _destroyVirtualCamera.SetActive(false);
+            Destroy(_destroyVirtualCamera, 2f);
+            GameObject[] ObjectsPlayerTag = GameObject.FindGameObjectsWithTag("Player");
+            for (int element = 0; element < ObjectsPlayerTag.Length; element++)
+            {
+                if (ObjectsPlayerTag[element].GetComponent<PlayerController>())
+                {
+                    ObjectsPlayerTag[element].GetComponent<PlayerController>().isMove = true;
+                }
+                else if (ObjectsPlayerTag[element].GetComponent<PlayerControllerType2>())
+                {
+                    ObjectsPlayerTag[element].GetComponent<PlayerControllerType2>().isMove = true;
+                }
+                else if (ObjectsPlayerTag[element].GetComponent<Type3PlayerController>())
+                {
+                    ObjectsPlayerTag[element].GetComponent<Type3PlayerController>().isMove = true;
+                }
+            }
         }
     }
     public void LoadMenu()
@@ -67,19 +104,54 @@ public class UIcontrol : MonoBehaviour
     }
     public void OpenMenu()
     {
-        if(MenuForMobile == false && wait == false)
+        if (MenuForMobile == false && wait == false)
         {
             UImenu.SetActive(true);
             wait = true;
             MenuForMobile = true;
             Invoke("Wait", 1f);
+            _destroyVirtualCamera = Instantiate(virtualCamera, Camera.main.transform.position, Camera.main.transform.rotation);
+            GameObject[] ObjectsPlayerTag = GameObject.FindGameObjectsWithTag("Player");
+            for (int element = 0; element < ObjectsPlayerTag.Length; element++)
+            {
+                if (ObjectsPlayerTag[element].GetComponent<PlayerController>())
+                {
+                    ObjectsPlayerTag[element].GetComponent<PlayerController>().isMove = false;
+                }
+                else if (ObjectsPlayerTag[element].GetComponent<PlayerControllerType2>())
+                {
+                    ObjectsPlayerTag[element].GetComponent<PlayerControllerType2>().isMove = false;
+                }
+                else if (ObjectsPlayerTag[element].GetComponent<Type3PlayerController>())
+                {
+                    ObjectsPlayerTag[element].GetComponent<Type3PlayerController>().isMove = false;
+                }
+            }
         }
-        if(MenuForMobile == true && wait == false)
+        if (MenuForMobile == true && wait == false)
         {
             UImenu.SetActive(false);
             wait = true;
             MenuForMobile = false;
             Invoke("Wait", 1f);
+            _destroyVirtualCamera.SetActive(false);
+            Destroy(_destroyVirtualCamera, 2f);
+            GameObject[] ObjectsPlayerTag = GameObject.FindGameObjectsWithTag("Player");
+            for (int element = 0; element < ObjectsPlayerTag.Length; element++)
+            {
+                if (ObjectsPlayerTag[element].GetComponent<PlayerController>())
+                {
+                    ObjectsPlayerTag[element].GetComponent<PlayerController>().isMove = true;
+                }
+                else if (ObjectsPlayerTag[element].GetComponent<PlayerControllerType2>())
+                {
+                    ObjectsPlayerTag[element].GetComponent<PlayerControllerType2>().isMove = true;
+                }
+                else if (ObjectsPlayerTag[element].GetComponent<Type3PlayerController>())
+                {
+                    ObjectsPlayerTag[element].GetComponent<Type3PlayerController>().isMove = true;
+                }
+            }
         }
     }
     private void Save()

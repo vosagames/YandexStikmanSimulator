@@ -5,10 +5,13 @@ public class Laser : MonoBehaviour
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private float laserMaxLength = 50f;
 
+    [SerializeField] private GameObject physicsSphere;
+
     public bool Power = true;
 
     private void Start()
     {
+        physicsSphere.SetActive(false);
         lineRenderer = GetComponent<LineRenderer>();
     }
 
@@ -17,10 +20,12 @@ public class Laser : MonoBehaviour
         if(Power == true)
         {
             lineRenderer.enabled = true;
+            physicsSphere.SetActive(true);
             UpdateLaser();
         }
         else
         {
+            physicsSphere.SetActive(false);
             lineRenderer.enabled = false;
         }
     }
@@ -35,6 +40,7 @@ public class Laser : MonoBehaviour
         if (Physics.Raycast(ray, out hit, laserMaxLength))
         {
             endPosition = hit.point;
+            physicsSphere.transform.position = endPosition;
             if(hit.collider.gameObject.GetComponent<LegsControl>())
             {
                 hit.collider.gameObject.GetComponent<LegsControl>().DamageBody();
