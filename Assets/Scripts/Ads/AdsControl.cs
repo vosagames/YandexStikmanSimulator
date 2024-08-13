@@ -4,6 +4,7 @@ using YG;
 public class AdsControl : MonoBehaviour
 {
     [SerializeField] private GameObject clueText;
+    [SerializeField] private GameObject buttonAds;
 
     private void OnDisable() => YandexGame.RewardVideoEvent -= Rewarded;
 
@@ -27,6 +28,7 @@ public class AdsControl : MonoBehaviour
     private void ClueShow()
     {
         clueText.SetActive(true);
+        buttonAds.SetActive(false);
     }
 
     public void RewardAdShow(int id)

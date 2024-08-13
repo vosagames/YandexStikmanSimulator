@@ -18,11 +18,14 @@ public class SceneEndControl : MonoBehaviour
     private int _attempt;
 
 
-
-    void Start()
+    private void Awake()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+    }
+
+    void Start()
+    {
         if(YandexGame.SDKEnabled == true)
         {
             GetLoad();

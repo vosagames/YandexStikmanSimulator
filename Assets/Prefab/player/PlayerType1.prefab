@@ -676,10 +676,10 @@ MonoBehaviour:
   freeLookCamera: {fileID: 6275049372679665672}
   touchArea:
     serializedVersion: 2
-    x: 1100
+    x: 0
     y: 0
-    width: 1000
-    height: 1000
+    width: 0
+    height: 0
 --- !u!114 &6275049372679665672
 MonoBehaviour:
   m_ObjectHideFlags: 0

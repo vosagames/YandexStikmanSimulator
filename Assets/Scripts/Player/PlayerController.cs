@@ -48,6 +48,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        GameObject[] Bodys = GameObject.FindGameObjectsWithTag("GrabBody");
+        for (int i = 0; i < Bodys.Length; i++) 
+        {
+            Bodys[i].GetComponent<Rigidbody>().isKinematic = false;
+        }
+    }
     private void Start()
     {
         isMove = true;
@@ -91,9 +99,11 @@ public class PlayerController : MonoBehaviour
             _playerVelocity.y = 0f;
         }
 
-        Vector3 direction = Quaternion.Euler(0, _playerCamera.transform.eulerAngles.y, 0) * new Vector3(horizontal, 0f, vertical).normalized;
+        //      Vector3 direction = Quaternion.Euler(0, _playerCamera.transform.eulerAngles.y, 0) * new Vector3(horizontal, 0f, vertical).normalized;
 
+        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
         speed = direction.magnitude;
+        
 
         if (direction != Vector3.zero) 
         {

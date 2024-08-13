@@ -58,6 +58,7 @@ public class PlayerControllerType2 : MonoBehaviour
         else
         {
             Debug.Log("Move STOP!");
+            _animator.SetFloat("MSed", 0f);
         }
     }
     private void Move()

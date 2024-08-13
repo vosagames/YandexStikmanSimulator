@@ -14,8 +14,8 @@ public class LegsControl : MonoBehaviour
 
     private void Start()
     {
-        _damageControl = GameObject.FindAnyObjectByType<DamageControl>();
-        _ray = FindObjectOfType<CameraRay>().gameObject;
+       // _damageControl = GameObject.FindAnyObjectByType<DamageControl>();
+      //  _ray = FindObjectOfType<CameraRay>().gameObject;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -27,10 +27,10 @@ public class LegsControl : MonoBehaviour
     public void DamageBody()
     {
         Debug.Log("коснулся");
-        Destroy(_ray);
+       // Destroy(_ray);
         Instantiate(_SpawnObj1, _SpawnPos1.position, Quaternion.Euler(_playerRotation.rotation.eulerAngles));
         Instantiate(_SpawnObj2, _SpawnPos2.position, Quaternion.Euler(Quaternion.identity.x, _playerRotation.rotation.eulerAngles.y, Quaternion.identity.z));
-        _damageControl.Damage(20);
+     //   _damageControl.Damage(20);
         Destroy(_DestroyObj);
     }
 }

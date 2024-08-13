@@ -35,7 +35,7 @@ public class UIcontrol : MonoBehaviour
     }
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && Switch == false && wait == false)
+        if(Input.GetKeyDown(KeyCode.BackQuote) && Switch == false && wait == false)
         {
             UImenu.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
@@ -61,7 +61,7 @@ public class UIcontrol : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKeyDown(KeyCode.Escape) && Switch == true && wait == false)
+        if (Input.GetKeyDown(KeyCode.BackQuote) && Switch == true && wait == false)
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;

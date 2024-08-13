@@ -60,9 +60,12 @@ public class Type3PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (move.magnitude >= 0.2f)
+        if (isMove == true)
         {
-            _playerModel.transform.Rotate(0f, _roationPSe, 0f);
+            if (move.magnitude >= 0.2f)
+            {
+                _playerModel.transform.Rotate(0f, _roationPSe, 0f);
+            }
         }
     }
     private void Move()
