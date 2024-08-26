@@ -17,11 +17,14 @@ public class GameOver : MonoBehaviour
 
     [SerializeField] private List<AudioSource> _audioKeys;
 
+    [SerializeField] private GameObject button;
+
     private int index = 0;
 
     private void Start()
     {
-        Invoke("loadLevel", 5f);
+        button.SetActive(false);
+        Invoke("ButtonShow", 5f);
         NumberPlayer++;
         Save();
         _gameOverText[0] = TextForString1.text + $" {NumberPlayer}";
@@ -48,7 +51,11 @@ public class GameOver : MonoBehaviour
         int id = Random.Range(0, _audioKeys.Count);
         _audioKeys[id].Play();
     }
-    private void loadLevel() => SceneManager.LoadScene(NumberLevel);
+    public void loadLevel() => SceneManager.LoadScene(NumberLevel);
+
+    private void ButtonShow() => button.SetActive(true);
+
+    public void ShowAds() => YandexGame.FullscreenShow();
 
     public void Save()
     {

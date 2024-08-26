@@ -50,4 +50,6 @@ public class SceneEndControl : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void ShowAds() => YandexGame.FullscreenShow();
+
 }

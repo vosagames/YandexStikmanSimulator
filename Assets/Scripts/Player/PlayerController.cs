@@ -39,14 +39,7 @@ public class PlayerController : MonoBehaviour
     private float vertical;
     private float speed;
 
-    private void Awake()
-    {
-        if (YandexGame.EnvironmentData.isDesktop == true)
-        {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-    }
+    private Rigidbody rb;
 
     private void OnDisable()
     {
@@ -58,6 +51,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
         isMove = true;
         _playerCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
         _playerVelocity = Vector3.zero;
@@ -99,9 +93,8 @@ public class PlayerController : MonoBehaviour
             _playerVelocity.y = 0f;
         }
 
-        //      Vector3 direction = Quaternion.Euler(0, _playerCamera.transform.eulerAngles.y, 0) * new Vector3(horizontal, 0f, vertical).normalized;
+        Vector3 direction = Quaternion.Euler(0, _playerCamera.transform.eulerAngles.y, 0) * new Vector3(horizontal, 0f, vertical).normalized;
 
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
         speed = direction.magnitude;
         
 
@@ -113,6 +106,7 @@ public class PlayerController : MonoBehaviour
         }
 
         _characterController.Move(direction * _moveSpeed * Time.deltaTime);
+      // rb.MovePosition(transform.position + direction * _moveSpeed * Time.deltaTime);
 
         if (JoystickInput == true)
         {
@@ -170,6 +164,14 @@ public class PlayerController : MonoBehaviour
             {
                 _animator.SetBool("Jump", false);
                 Debug.Log("!= null");
+            }
+            if(hit.collider.CompareTag("Platform"))
+            {
+                this.transform.parent = hit.collider.transform;
+            }
+            else
+            {
+                this.transform.parent = null;
             }
         }
     }

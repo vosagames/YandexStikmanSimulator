@@ -11,8 +11,20 @@ public class MovePlatform : MonoBehaviour
     [SerializeField] private bool posY;
     [SerializeField] private bool posZ;
 
+    private AudioSource _audio;
+
     private float Position;
 
+    private void OnEnable()
+    {
+        _audio = GetComponent<AudioSource>();
+        _audio.Play();
+    }
+    private void OnDisable()
+    {
+        _audio = GetComponent<AudioSource>();
+        _audio.Stop();
+    }
     private void Start()
     {
         if(posZ == true)

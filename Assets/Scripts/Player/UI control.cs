@@ -19,15 +19,11 @@ public class UIcontrol : MonoBehaviour
     {
         if (YandexGame.EnvironmentData.isMobile == true || YandexGame.EnvironmentData.isTablet == true)
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
             UImenu.SetActive(false);
             SettingsForMobile.SetActive(true);
         }
         else if (YandexGame.EnvironmentData.isDesktop == true)
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
             UImenu.SetActive(false);
             SettingsForMobile.SetActive(false);
         }
@@ -96,6 +92,16 @@ public class UIcontrol : MonoBehaviour
     public void Resets()
     {
         Save();
+        if (YandexGame.EnvironmentData.isMobile == true || YandexGame.EnvironmentData.isTablet == true)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else if (YandexGame.EnvironmentData.isDesktop == true)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
         SceneManager.LoadScene(NumberLevel);
     }
     private void Wait()

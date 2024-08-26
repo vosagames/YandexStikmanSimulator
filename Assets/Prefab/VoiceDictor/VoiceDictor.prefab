@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3855156565342372688}
   - component: {fileID: 3935258976796679949}
   - component: {fileID: 3762239162084182144}
+  - component: {fileID: 8905710785809879159}
+  - component: {fileID: 5493936681864777542}
   m_Layer: 0
   m_Name: VoiceDictor
   m_TagString: Untagged
@@ -102,6 +104,36 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8905710785809879159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2149710748322827645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b16f412513c3324397f0caa658eb483, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _control: {fileID: 0}
+--- !u!114 &5493936681864777542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2149710748322827645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4481b8e1f892e744ba427be5c72b8a01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titles: []
+  voice: []
+  waitTime: []
+  destroyTime: 3.5
+  idForTitles: 0
 --- !u!1 &6922686748428067731
 GameObject:
   m_ObjectHideFlags: 0

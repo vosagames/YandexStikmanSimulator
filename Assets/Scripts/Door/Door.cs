@@ -6,6 +6,7 @@ using YG;
 public class Door : MonoBehaviour
 {
     [SerializeField] private GameObject objectDoor, animationDoor;
+    [SerializeField] private GameObject button;
     [SerializeField] private TimerControl timer;
 
     private void Awake()
@@ -16,9 +17,13 @@ public class Door : MonoBehaviour
 
     public void OpenDoor()
     {
+        GameObject _UIcontrol = FindObjectOfType<UIcontrol>().gameObject;
+        _UIcontrol.GetComponent<UIcontrol>().enabled = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         objectDoor.SetActive(false);
         animationDoor.SetActive(true);
-        Invoke("NextLevel", 6f);
+        Invoke("ShowButtonNextLevel", 6f);
         var obj = GameObject.FindGameObjectsWithTag("Player");
         for(int i = 0; i<obj.Length; i++)
         {
@@ -27,7 +32,11 @@ public class Door : MonoBehaviour
         
     }
 
-    private void NextLevel()
+    private void ShowButtonNextLevel()
+    {
+        button.SetActive(true);
+    }
+    public void NextLevel()
     {
         NumberLevel++;
         Save();

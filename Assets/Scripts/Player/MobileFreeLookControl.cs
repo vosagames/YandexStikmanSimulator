@@ -11,6 +11,8 @@ public class MobileFreeLookControl : MonoBehaviour
 
     private Touch touch;
 
+    private bool mobile;
+
     private void Start()
     {
         if (Screen.width <= 1334)
@@ -26,6 +28,7 @@ public class MobileFreeLookControl : MonoBehaviour
         {
             freeLookCamera.m_XAxis.m_InputAxisName = null;
             freeLookCamera.m_YAxis.m_InputAxisName = null;
+            mobile = true;
         }
         else if(YandexGame.EnvironmentData.isDesktop == true)
         {
@@ -36,6 +39,12 @@ public class MobileFreeLookControl : MonoBehaviour
     
     private void Update()
     {
+        if(mobile == true)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+
         if (Input.touchCount > 0)
         {
             if(Input.touchCount == 1) 

@@ -150,6 +150,7 @@ MonoBehaviour:
   _rotateSpeed: 10
   _roationPSe: -4
   _gravityValue: -9.8
+  _rayDistance: 0.7
   _playerCamera: {fileID: 0}
   _playerModel: {fileID: 768563948443207007}
   controller: {fileID: 0}
@@ -365,7 +366,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2458474989409993051}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1452132, y: -0, z: -0, w: 0.9894004}
+  m_LocalRotation: {x: 0.14521323, y: -0, z: -0, w: 0.9894004}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -642,7 +643,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4034657662054817520}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.109177604, y: -0, z: -0, w: 0.99402225}
+  m_LocalRotation: {x: 0.10917765, y: -0, z: -0, w: 0.99402225}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1361,7 +1362,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   freeLookCamera: {fileID: 5146665910958114765}
-  _joystick: {fileID: 0}
   touchArea:
     serializedVersion: 2
     x: 0
@@ -1393,7 +1393,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7596450962866016698}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14521341, y: -0, z: -0, w: 0.9894004}
+  m_LocalRotation: {x: 0.1452135, y: -0, z: -0, w: 0.9894004}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

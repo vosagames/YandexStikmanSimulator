@@ -101,7 +101,8 @@ public class CameraRay : MonoBehaviour
 
         if (Grab == true)
         {
-            DragObject.transform.position = Vector3.SmoothDamp(DragObject.transform.position, DragPosition.position, ref velocity, _smoothTime);
+            //DragObject.transform.position = Vector3.SmoothDamp(DragObject.transform.position, DragPosition.position, ref velocity, _smoothTime);
+            DragObject.transform.position = DragPosition.position;
             Invoke("ReloadGrab", 0.1f);
         }
 

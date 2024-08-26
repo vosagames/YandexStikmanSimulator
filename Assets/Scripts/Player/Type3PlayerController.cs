@@ -9,6 +9,7 @@ public class Type3PlayerController : MonoBehaviour
     [SerializeField] private float _rotateSpeed = 3f;
     [SerializeField] private float _roationPSe;
     [SerializeField] private float _gravityValue = -9.8f;
+    [SerializeField] private float _rayDistance;
 
 
     [SerializeField] private Transform _playerCamera;
@@ -99,5 +100,20 @@ public class Type3PlayerController : MonoBehaviour
 
         _playerVelocity.y += _gravityValue * Time.deltaTime;
         controller.Move(_playerVelocity * Time.deltaTime);
+        Vector3 rayDirection = new Vector3(0, -1, 0);
+        Ray ray = new Ray(transform.position, rayDirection);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, _rayDistance))
+        {
+            Debug.DrawRay(transform.position, rayDirection * _rayDistance, Color.red);
+            if (hit.collider.CompareTag("Platform"))
+            {
+                this.transform.parent = hit.collider.transform;
+            }
+            else
+            {
+                this.transform.parent = null;
+            }
+        }
     }
 }

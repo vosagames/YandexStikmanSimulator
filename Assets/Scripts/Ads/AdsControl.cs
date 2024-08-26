@@ -16,6 +16,7 @@ public class AdsControl : MonoBehaviour
     {
         clueText.SetActive(false);
     }
+    public void ShowAds() => YandexGame.FullscreenShow();
 
     private void Rewarded(int id)
     {

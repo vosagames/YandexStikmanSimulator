@@ -2517,6 +2517,7 @@ MonoBehaviour:
   _moveSpeed: 4
   _rotateSpeed: 15
   _gravityValue: -9.8
+  _rayDistance: 0.7
   _animator: {fileID: 4984167317412515302}
   _player3Dmodel: {fileID: 1430207864551465302}
   _joystick: {fileID: 8920595761052826260}
@@ -2541,13 +2542,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 0.1
-  m_Radius: 0.24
+  m_Height: 0.2
+  m_Radius: 0.26
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.0001
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 1.36, z: 0.34}
+  m_Center: {x: 0, y: 1.35, z: 0.34}
 --- !u!1 &7353237480947701095
 GameObject:
   m_ObjectHideFlags: 0
@@ -3648,7 +3649,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   freeLookCamera: {fileID: 2112213250636039378}
-  _joystick: {fileID: 0}
   touchArea:
     serializedVersion: 2
     x: 0

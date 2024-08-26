@@ -13,7 +13,7 @@ public class ObjectControlUpAndDown : MonoBehaviour
 
     private void OnEnable()
     {
-        if(transform.position.y ==  _positionY)
+        if(_targetObject.position.y ==  _positionY)
         {
             GetComponent<AudioSource>().Stop();
         }
