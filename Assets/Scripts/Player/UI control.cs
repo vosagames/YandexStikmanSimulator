@@ -91,6 +91,7 @@ public class UIcontrol : MonoBehaviour
     }
     public void Resets()
     {
+        YandexGame.FullscreenShow();
         Save();
         if (YandexGame.EnvironmentData.isMobile == true || YandexGame.EnvironmentData.isTablet == true)
         {

@@ -22,12 +22,14 @@ MonoBehaviour:
     name: VOSA GAMES
     uniqueID: 000
     photo: https://justplaygames.ru/public/icon_player.png
+    payingStatus: paying
+    serverTime: 1721201231000
   AdWhenLoadingScene: 0
   showFirstAd: 1
   rewardedAfterClosing: 1
   adDisplayCalls: 1
   fullscreenAdInterval: 30
-  durationOfAdSimulation: 4
+  durationOfAdSimulation: 10
   loadAdWithDelaySimulation: 0
   testErrorOfRewardedAdsInEditor: 0
   saveCloud: 1
@@ -306,19 +308,28 @@ MonoBehaviour:
     title: Gun
     description: Product - Gun
     imageURI: https://justplaygames.ru/public/Paymant1.png
+    price: 5 YAN
     priceValue: 5
+    priceCurrencyCode: YAN
+    currencyImageURL: https://yastatic.net/s3/games-static/static-data/images/payments/sdk/currency-icon-s@2x.png
     consumed: 1
   - id: armor
     title: Armor
     description: Product - Armor
     imageURI: https://justplaygames.ru/public/Paymant2.png
+    price: 10 YAN
     priceValue: 10
+    priceCurrencyCode: YAN
+    currencyImageURL: https://yastatic.net/s3/games-static/static-data/images/payments/sdk/currency-icon-s@2x.png
     consumed: 1
   - id: grenade
     title: Grenade
     description: Product - Grenade
     imageURI: https://justplaygames.ru/public/Paymant3.png
+    price: 30 YAN
     priceValue: 30
+    priceCurrencyCode: YAN
+    currencyImageURL: https://yastatic.net/s3/games-static/static-data/images/payments/sdk/currency-icon-s@2x.png
     consumed: 1
   metricaEnable: 0
   metricaCounterID: 0
@@ -328,5 +339,3 @@ MonoBehaviour:
   backgroundImageFormat: 3
   pixelRatioEnable: 0
   pixelRatioValue: 1
-  loadGameRun: 0
-  staticRBTInGame: 0
